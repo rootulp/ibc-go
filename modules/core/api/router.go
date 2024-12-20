@@ -37,6 +37,8 @@ func (rtr *Router) AddRoute(portID string, cbs IBCModule) *Router {
 
 // Route returns the IBCModule for a given portID.
 func (rtr *Router) Route(portID string) IBCModule {
+	fmt.Printf("portID: %s\n", portID)
+	fmt.Printf("rtr.routes: %v\n", rtr.routes)
 	route, ok := rtr.routes[portID]
 	if !ok {
 		panic(fmt.Sprintf("no route for %s", portID))
