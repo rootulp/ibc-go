@@ -231,7 +231,7 @@ func (im IBCModule) OnAcknowledgementPacket(
 		return sdkerrors.Wrapf(sdkerrors.ErrUnknownRequest, "cannot unmarshal ICS-20 transfer packet data: %s", err.Error())
 	}
 
-	// Verify that the acknowledgmenet JSON serialization and deserialization is determinstic.
+	// Verify that the acknowledgmenet serializes and deserializes to JSON determinstically.
 	// See https://github.com/cosmos/ibc-go/security/advisories/GHSA-jg6f-48ff-5xrw
 	bz := types.ModuleCdc.MustMarshalJSON(&ack)
 	if !bytes.Equal(bz, acknowledgement) {
